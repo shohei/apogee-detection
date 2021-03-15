@@ -1,0 +1,24 @@
+clear all; close all;
+
+
+A=1;b=1;c=1;
+Q=1;R=2;
+N=300;
+v=randn(N,1)*sqrtm(Q);
+w=randn(N,1)*sqrtm(R);
+
+x=zeros(N,1); y=zeros(N,1);
+y(1)=c'*x(1,:)'+w(1);
+for k=2:N
+   x(k,:)=A*x(k-1,:)'+b*v(k-1);
+   y(k)=c'*x(k,:)'*w(k);
+end
+
+xhat=zeros(N,1);
+P=0;
+
+
+
+
+
+
