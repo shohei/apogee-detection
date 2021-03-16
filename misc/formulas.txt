@@ -1,0 +1,25 @@
+\begin{eqnarray*}
+\dot{x}&=&Ax+Bu +v \\
+y &=& Cx +w
+\end{eqnarray*}
+
+
+\[
+  A = \left(
+    \begin{array}{ccc}
+      1 & \Delta t & \Delta t^2/2 \\
+      0 & 1 & \Delta t \\
+      0 & 0 & 1
+    \end{array}
+  \right)
+\]
+
+\[
+  C = \left(
+    \begin{array}{ccc}
+      1 & 0 & 0 \\
+      0 & 0 & 1
+    \end{array}
+  \right)
+\]
+

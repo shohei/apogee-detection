@@ -11,6 +11,23 @@ David W. Schultz, Application of the Kalman Filter to Rocket Apogee Detection
 
 [https://forum.arduino.cc/index.php?action=dlattach;topic=717425.0;attach=392768](https://forum.arduino.cc/index.php?action=dlattach;topic=717425.0;attach=392768)
 
+## Main point
+The flight of the model rocket around the apogee can be approximated as the uniformly accelerated motion. It is because the thrust is already cut off and only the gravitiy matters. We should consider the drag but it can be ignored since it is tiny. In case we consider the drag, we need to use Extended Kalman Filter (EKF) since the drag is proportinal to the square of the velocity.
+
+For the uniformly accelerated motion, the system model is described as follows. 
+
+![](misc/system.png)
+
+![](misc/Amatrix.png)
+
+![](misc/Cmatrix.png)
+
+The covariance matrix P is initialized as follows.
+
+![](misc/P.png) 
+
+where gamma is the constant and I is the unit matrix. The value of the gamma was sensitive of the performance of the kalman filter. (I found gamma=100 worked fine.)
+
 ## Sample data generation
 
 The sample flight log was found on Nakka's website: [https://www.nakka-rocketry.net/A-100M.html](https://www.nakka-rocketry.net/A-100M.html) 
@@ -31,10 +48,5 @@ MATLAB polyfit() function was used to interpolate the value. By this, sample dat
 The sensor observation value was created by adding Gaussian noise to this reference data.
 
 ![obs](misc/sensor_observation.png)
-
-
-
-
-
 
 
