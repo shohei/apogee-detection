@@ -40,7 +40,8 @@ I extracted time, altitude, acceleration for the range of apogee area (from abou
 
 ![formula](misc/calib.png)
 
-MATLAB polyfit() function was used to interpolate the value. By this, sample data were obtained for the period of 20ms.
+MATLAB polyfit() function was used to interpolate the value. For example, in the below graph of the interpolation of the altitude, N=2 is selected considering it is capable enough to represente the data. (Try fittest.m in the misc folder to see.)
+Finally, sample data were obtained for the period of 20ms.
 
 ![result](misc/Fitting_altitude.png)
 ![interpolate](misc/interpolate.png)
