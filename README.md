@@ -21,7 +21,7 @@ Flight log included time, thrust, altitude, velocity, acceleration, mass, dynami
 
 Extracted time, altitude, acceleration and converted to SI unit. The data ranges only around apogee. Then, atmospheric pressure was calculated from altitude, using the following formula (Calibration formula for BMP180).
 
-![formula](misc/mimetex.gif)
+![formula](misc/calib.png)
 
 MATLAB polyfit() function was used to interpolate the value. By this, sample data was obtained for the period of 20ms.
 
