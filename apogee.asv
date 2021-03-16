@@ -35,28 +35,27 @@ A=[1 dt dt^2/2
 C=[1 0 0
    0 0 1];
 q = 1; % System noise
-r1 = 2; %sensor noise (pressure sensor)
-r2 = 1; %Sensor noise (accelerometer)
+r1 = 500; %sensor noise (pressure sensor)
+r2 = 2; %Sensor noise (accelerometer)
 v=rand(N,3)*sqrtm(q);
 w=randn(N,2)*sqrtm(diag([r1,r2]));
 Qk = cov(v);
 Rk = cov(w);
 
-x=horzcat(altituden',accn');
-y=horzcat(altituden'+w(:,1),accn'+w(:,2));
-xhat=zeros(N,3); %xhat(:,1)=y(:,1); xhat(:,3)=y(:,2);
-gamma=100; P=gamma*eye(3);
+x=horzcat(pn',accn');
+y=horzcat(pn'+w(:,1),accn'+w(:,2));
+xhat = ho;
+gamma=1; P=gamma*eye(3);
 xhat(1,:)=[0,0,0];
 for k=2:N
    [xhat(k,:),P,G] = kf(A,0,0,C,Qk,Rk,0,y(k,:),xhat(k-1,:),P); 
+   P
 end
 
 figure(1); clf;
-Ni=10;
-plot(Ni:N,y(Ni:N,1),'k:',Ni:N,x(Ni:N,1),'r--',Ni:N,xhat(Ni:N,1),'b-');
+plot(1:N,y(:,1),'k:',1:N,x(:,1),'r--',1:N,xhat(:,1),'b-');
 xlabel('No. of samples');
 legend('measured','true','estimate');
-title('Altitude estimation by Kalman Filter');
 big;
 
 % figure(1); clf;
