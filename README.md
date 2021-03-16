@@ -24,6 +24,8 @@ For the uniformly accelerated motion, the system model is described as follows.
 
 ![](misc/Amatrix.png)
 
+![](misc/Bmatrix.png)
+
 ![](misc/Cmatrix.png)
 
 The covariance matrix P is initialized as follows.
