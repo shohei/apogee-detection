@@ -15,7 +15,7 @@ David W. Schultz, Application of the Kalman Filter to Rocket Apogee Detection
 
 The sample flight log was found on Nakka's website: [https://www.nakka-rocketry.net/A-100M.html](https://www.nakka-rocketry.net/A-100M.html) 
 
-Flight log included time, thrust, altitude, velocity, acceleration, mass, dynamic pressure, and drag.
+The flight log included time, thrust, altitude, velocity, acceleration, mass, dynamic pressure, and drag.
 
 ![log](misc/flight_log.png)
 
@@ -23,7 +23,7 @@ Extracted time, altitude, acceleration and converted to SI unit. The data ranges
 
 ![formula](misc/calib.png)
 
-MATLAB polyfit() function was used to interpolate the value. By this, sample data was obtained for the period of 20ms.
+MATLAB polyfit() function was used to interpolate the value. By this, sample data were obtained for the period of 20ms.
 
 ![result](misc/Fitting_altitude.png)
 ![interpolate](misc/interpolate.png)
