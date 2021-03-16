@@ -46,6 +46,7 @@ Rk = cov(w);
 x=horzcat(altituden',accn');
 y=horzcat(altituden'+w(:,1),accn'+w(:,2));
 xhat=zeros(N,3); %xhat(:,1)=y(:,1); xhat(:,3)=y(:,2);
+% Note: The performance is sensitive to value of gamma.
 gamma=100; P=gamma*eye(3);
 xhat(1,:)=[0,0,0];
 for k=2:N
