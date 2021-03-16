@@ -18,6 +18,10 @@ For the uniformly accelerated motion, the system model is described as follows.
 
 ![](misc/system.png)
 
+![](misc/x.png)
+
+![](misc/y.png)
+
 ![](misc/Amatrix.png)
 
 ![](misc/Cmatrix.png)

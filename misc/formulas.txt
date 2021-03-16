@@ -4,6 +4,8 @@ y &=& Cx +w
 \end{eqnarray*}
 
 
+
+
 \[
   A = \left(
     \begin{array}{ccc}
@@ -24,3 +26,23 @@ y &=& Cx +w
 \]
 
 P = \gamma I
+
+\[
+  x = \left(
+    \begin{array}{ccc}
+      \rm{pressure} \\
+      \rm{velocity} \\
+      \rm{acceleration} 
+    \end{array}
+  \right)
+\]
+
+\[
+  y = \left(
+    \begin{array}{ccc}
+      \rm{pressure} \\
+      \rm{acceleration} 
+    \end{array}
+  \right)
+\]
+
