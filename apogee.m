@@ -1,4 +1,5 @@
 clear; close all;
+warning('OFF', 'MATLAB:table:ModifiedAndSavedVarnames');
 
 % data generation (raw data from Nakka's page)
 % https://www.nakka-rocketry.net/A-100M.html 
@@ -59,14 +60,14 @@ legend('measured','true','estimate');
 title('Altitude estimation by Kalman Filter');
 big;
 
-% figure(1); clf;
+% figure(2); clf;
 % plot(1:N,y(:,1),'k:',1:N,x(:,1),'r--');
 % xlabel('No. of samples');
 % legend('measured','true');
-% title('pressure');
+% title('altitude');
 % big;
 
-% figure(2); clf;
+% figure(3); clf;
 % plot(1:N,y(:,2),'k:',1:N,x(:,2),'b--');
 % xlabel('No. of samples');
 % legend('measured','true');

@@ -1,6 +1,6 @@
 clear; close all; clc;
 
-dat = readtable('flight_log.csv');
+dat = readtable('../flight_log.csv');
 t = dat.Time_s_;
 acc = dat.Acceleration_m_s2_;
 p = dat.Pressure_Pa_;
@@ -23,10 +23,13 @@ pcoeff=polyfit(t,altitude,2);
 tn=t(1):dt:t(end);
 altituden=polyval(pcoeff,tn);
 
+
 plot(tn,accn,'o');
 hold on; 
 yyaxis right;
 plot(tn,pn,'o');
+legend('acceleration','pressure');
+big;
 
 
 
