@@ -3,7 +3,7 @@
 y &=& Cx +w
 \end{eqnarray*}
 
-
+B=0
 
 
 \[
