@@ -11,7 +11,7 @@ David W. Schultz, Application of the Kalman Filter to Rocket Apogee Detection
 
 [https://forum.arduino.cc/index.php?action=dlattach;topic=717425.0;attach=392768](https://forum.arduino.cc/index.php?action=dlattach;topic=717425.0;attach=392768)
 
-## Main point
+## Summary
 The flight of the model rocket around the apogee can be approximated as the uniformly accelerated motion. It is because the thrust is already cut off and only the gravitiy matters. We should consider the drag but it can be ignored since it is tiny. In case we consider the drag, we need to use Extended Kalman Filter (EKF) since the drag is proportinal to the square of the velocity. Note that the Linear Kalman Filter, which I'm using in this code, can be used only for the linear system.
 
 For the uniformly accelerated motion, the system model is described as follows. 
