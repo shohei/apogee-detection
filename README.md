@@ -36,7 +36,7 @@ The flight log included time, thrust, altitude, velocity, acceleration, mass, dy
 
 ![log](misc/flight_log.png)
 
-Extracted time, altitude, acceleration and converted to SI unit. The data ranges only around apogee. Then, atmospheric pressure was calculated from altitude, using the following formula (Calibration formula for BMP180: [http://www.umek.topaz.ne.jp/mameduino/bmp180_pressuresensor_1/](http://www.umek.topaz.ne.jp/mameduino/bmp180_pressuresensor_1/)).
+I extracted time, altitude, acceleration for the range of apogee area (from about 6sec to 9sec) and converted them to SI unit. Then, the atmospheric pressure was calculated from altitude, using the following formula (Calibration formula for BMP180: [http://www.umek.topaz.ne.jp/mameduino/bmp180_pressuresensor_1/](http://www.umek.topaz.ne.jp/mameduino/bmp180_pressuresensor_1/)).
 
 ![formula](misc/calib.png)
 
