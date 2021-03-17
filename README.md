@@ -32,7 +32,7 @@ The covariance matrix P is initialized as follows.
 
 ![](misc/P.png) 
 
-where gamma is the constant and I is the unit matrix. The value of the gamma was sensitive of the performance of the kalman filter. (I found gamma=100 worked fine.)
+where gamma is the constant and I is the unit matrix. The value of the gamma was sensitive of the performance of the kalman filter. (I found gamma=50 worked fine.)
 
 ## Sample data generation
 

@@ -21,9 +21,6 @@ accn=polyval(pcoeff,tn);
 %N=2 for pressure
 pcoeff=polyfit(t,p,2);
 pn=polyval(pcoeff,tn);
-%N=2 for altitude
-pcoeff=polyfit(t,altitude,2);
-altituden=polyval(pcoeff,tn);
 
 % System model definition
 % Described in Application of the Kalman Filter to Rocket Apogee Detection
@@ -43,11 +40,15 @@ w=randn(N,2)*sqrtm(diag([r1,r2]));
 Qk = cov(v);
 Rk = cov(w);
 
+p0 = 101325; %[Pa]: Atmospheric pressure at sea level
+T=23; %degC: Temperature in the sky
+altituden=((p0./pn).^(1/5.257)-1)*(T+273.15)/0.0065;
+
 x=horzcat(altituden',accn');
 y=horzcat(altituden'+w(:,1),accn'+w(:,2));
-xhat=zeros(N,3); %xhat(:,1)=y(:,1); xhat(:,3)=y(:,2);
+xhat=zeros(N,3); 
 % Note: The performance is sensitive to value of gamma.
-gamma=100; P=gamma*eye(3);
+gamma=50; P=gamma*eye(3);
 xhat(1,:)=[0,0,0];
 for k=2:N
    [xhat(k,:),P,G] = kf(A,0,0,C,Qk,Rk,0,y(k,:),xhat(k-1,:),P); 
