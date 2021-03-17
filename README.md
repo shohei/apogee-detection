@@ -46,7 +46,7 @@ I extracted time, altitude, acceleration for the range of apogee area (from abou
 
 ![formula](misc/calib.png)
 
-MATLAB polyfit() function was used to interpolate the value. For example, in the below graph of the interpolation of the pressure, N=2 is selected since it is capable enough to represent the data. (Try fittest.m in the misc folder to see.)
+Polynomical fitting (MATLAB polyfit() function) was used to interpolate the value. For example, in the below graph of the interpolation of the pressure, N=2 is selected since it is capable enough to represent the data. (Try fittest.m in the misc folder to see.)
 
 ![result](misc/Fitting_pressure.png)
 
