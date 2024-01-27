@@ -1,5 +1,12 @@
 # Apogee detection (N-3 rocket)
 
+(Revised) 
+The maximum 
+
+
+
+### Obsolete content (below)
+
 It detects the apogee when there is 5 consecutive decrease in the measured altitude sequence.
 The below is the simulation made with the measured data of N-2 rocket (Tana).
 
