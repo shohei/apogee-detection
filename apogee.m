@@ -55,7 +55,7 @@ xhat=zeros(N,3);
 gamma=50; P=gamma*eye(3);
 xhat(1,:)=[0,0,0];
 for k=2:N
-   [xhat(k,:),P,G] = kf(A,0,0,C,Qk,Rk,0,y(k,:),xhat(k-1,:),P); 
+   [xhat(k,:),P,G] = kf(A,C,Qk,Rk,y(k,:),xhat(k-1,:),P); 
 end
 
 figure(1); clf;
@@ -80,7 +80,7 @@ big;
 % title('accelerometer');
 % big;
 
-function [xhat_new,P_new,G] = kf(A,B,Bu,C,Q,R,u,y,xhat,P)
+function [xhat_new,P_new,G] = kf(A,C,Q,R,y,xhat,P)
   xhat = xhat(:);y=y(:);
   xhatm = A*xhat;
   Pm = A*P*A' + Q;
