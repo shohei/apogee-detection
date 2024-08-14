@@ -81,7 +81,7 @@ big;
 % big;
 
 function [xhat_new,P_new,G] = kf(A,B,Bu,C,Q,R,u,y,xhat,P)
-  xhat = xhat(:); u=u(:); y=y(:);
+  xhat = xhat(:);y=y(:);
   xhatm = A*xhat;
   Pm = A*P*A' + Q;
   G = Pm*C'*inv(C*Pm*C'+R);
