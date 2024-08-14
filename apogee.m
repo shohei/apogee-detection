@@ -37,8 +37,12 @@ r1 = 2; %sensor noise (pressure sensor)
 r2 = 1; %Sensor noise (accelerometer)
 v=rand(N,3)*sqrtm(q);
 w=randn(N,2)*sqrtm(diag([r1,r2]));
-Qk = cov(v);
-Rk = cov(w);
+% Qk = cov(v);
+% Rk = cov(w);
+Qk = [0 0 0;
+      0 0 0
+      0 0 sqrt(q)];
+Rk = diag([r1,r2]);
 
 p0 = 101325; %[Pa]: Atmospheric pressure at sea level
 T=23; %degC: Temperature in the sky
@@ -79,7 +83,7 @@ big;
 function [xhat_new,P_new,G] = kf(A,B,Bu,C,Q,R,u,y,xhat,P)
   xhat = xhat(:); u=u(:); y=y(:);
   xhatm = A*xhat + Bu*u;
-  Pm = A*P*A' + B*Q*B';
+  Pm = A*P*A' + Q;
   G = Pm*C'*inv(C*Pm*C'+R);
   xhat_new = xhatm+G*(y-C*xhatm);
   P_new = (eye(size(A))-G*C)*Pm;
