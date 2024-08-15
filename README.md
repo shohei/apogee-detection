@@ -1,4 +1,6 @@
-# Apogee detection
+# Altitude estimation using Kalman Filter
+
+(Support both MATLAB and Octave)
 
 ## How to run
 ```
