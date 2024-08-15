@@ -8,7 +8,6 @@ warning('OFF', 'MATLAB:table:ModifiedAndSavedVarnames');
 % Interpolated using MATLAB polyfit function,
 % so that sampling rate becomes 20ms
 
-
 LIC = license('inuse');
 if LIC(1).feature=='matlab'
     %MATLAB Platform
