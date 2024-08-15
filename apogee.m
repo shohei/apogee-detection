@@ -2,17 +2,31 @@ clear; close all;
 warning('OFF', 'MATLAB:table:ModifiedAndSavedVarnames');
 
 % data generation (raw data from Nakka's page)
-% https://www.nakka-rocketry.net/A-100M.html 
+% https://www.nakka-rocketry.net/A-100M.html
 % A-100M KNDX
 % Extracted around apogee time (6s~9s)
 % Interpolated using MATLAB polyfit function,
 % so that sampling rate becomes 20ms
 
-dat = readtable('flight_log.csv');
-t = dat.Time_s_;
-acc = dat.Acceleration_m_s2_;
-p = dat.Pressure_Pa_;
-altitude = dat.Altitude_m_;
+
+LIC = license('inuse');
+if LIC(1).feature=='matlab'
+    %MATLAB Platform
+    dat = readtable('flight_log.csv');
+    t = dat.Time_s_;
+    acc = dat.Acceleration_m_s2_;
+    p = dat.Pressure_Pa_;
+    altitude = dat.Altitude_m_;
+elseif LIC(1).feature=='octave'
+    %Octave Platform
+    pkg load dataframe
+    dat = dataframe('flight_log.csv');
+    t = dat.Time__s_;
+    acc = dat.Acceleration__m_s2_;
+    p = dat.Pressure__Pa_;
+    altitude = dat.Altitude__m_;
+end
+
 dt=0.02; %20ms;
 tn=t(1):dt:t(end);
 %N=3 for accelerometer
@@ -28,10 +42,10 @@ pn=polyval(pcoeff,tn);
 N=length(tn); % data length for the interpolated data
 
 A=[1 dt dt^2/2
-   0 1 dt
-   0 0 1];
+    0 1 dt
+    0 0 1];
 C=[1 0 0
-   0 0 1];
+    0 0 1];
 q = 1; % System noise
 r1 = 2; %sensor noise (pressure sensor)
 r2 = 1; %Sensor noise (accelerometer)
@@ -40,8 +54,8 @@ w=randn(N,2)*sqrtm(diag([r1,r2]));
 % Qk = cov(v);
 % Rk = cov(w);
 Qk = [0 0 0;
-      0 0 0
-      0 0 sqrt(q)];
+    0 0 0
+    0 0 sqrt(q)];
 Rk = diag([r1,r2]);
 
 p0 = 101325; %[Pa]: Atmospheric pressure at sea level
@@ -50,12 +64,12 @@ altituden=((p0./pn).^(1/5.257)-1)*(T+273.15)/0.0065;
 
 x=horzcat(altituden',accn');
 y=horzcat(altituden'+w(:,1),accn'+w(:,2));
-xhat=zeros(N,3); 
+xhat=zeros(N,3);
 % Note: The performance is sensitive to value of gamma.
 gamma=50; P=gamma*eye(3);
 xhat(1,:)=[0,0,0];
 for k=2:N
-   [xhat(k,:),P,G] = kf(A,C,Qk,Rk,y(k,:),xhat(k-1,:),P); 
+    [xhat(k,:),P,G] = kf(A,C,Qk,Rk,y(k,:),xhat(k-1,:),P);
 end
 
 figure(1); clf;
@@ -79,13 +93,4 @@ big;
 % legend('measured','true');
 % title('accelerometer');
 % big;
-
-function [xhat_new,P_new,G] = kf(A,C,Q,R,y,xhat,P)
-  xhat = xhat(:);y=y(:);
-  xhatm = A*xhat;
-  Pm = A*P*A' + Q;
-  G = Pm*C'*inv(C*Pm*C'+R);
-  xhat_new = xhatm+G*(y-C*xhatm);
-  P_new = (eye(size(A))-G*C)*Pm;
-end
 
