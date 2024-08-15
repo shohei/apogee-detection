@@ -18,6 +18,7 @@ if LIC(1).feature=='matlab'
     altitude = dat.Altitude_m_;
 elseif LIC(1).feature=='octave'
     %Octave Platform
+    pkg install "https://downloads.sourceforge.net/project/octave/Octave%20Forge%20Packages/Individual%20Package%20Releases/dataframe-1.2.0.tar.gz"
     pkg load dataframe
     dat = dataframe('flight_log.csv');
     t = dat.Time__s_;
